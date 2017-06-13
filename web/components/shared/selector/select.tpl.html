@@ -1,0 +1,31 @@
+<!--div class="input-group">
+  <input type="text" class="form-control" name="" value="{{search}}" data-bind="search">
+  <span class="input-group-btn">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li>
+        <input type="text" name="" value="{{omnisearch}}" data-bind="omnisearch">
+      </li>
+      <div id="items">
+      </div>
+    </ul>
+  </span>
+</div>
+{{selectedValue}}
+-->
+
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+     {{selectedValue}}<span class="caret"></span>
+  </button->
+  <input type="text" class="btn btn-default dropdown-toggle" data-bind="search" value="{{selectedValue}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <ul class="dropdown-menu">
+    <li>
+      <input type="text" name="" value="{{omnisearch}}" data-bind="omnisearch">
+    </li>
+    <div id="items">
+    </div>
+  </ul>
+</div>

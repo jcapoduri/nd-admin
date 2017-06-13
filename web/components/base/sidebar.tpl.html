@@ -1,0 +1,73 @@
+<h3> Neodymium </h3>
+<header>
+    Usuario:
+    <i class="fa fa-user" aria-hidden="true"></i>
+    {{name}} <span class="option">(Salir)</span>
+</header>
+<nav>
+  <ul>
+    {{#if canEditMainEntities}}
+    <li data-link>
+      <a href="#clients">
+        <i class="fa fa-users" aria-hidden="true"></i> Clientes <span></span>
+      </a>
+    </li>
+    {{/if}}
+    {{#if canEditAuxiliaries}}
+    <li>
+      <i class="fa fa-medkit" aria-hidden="true"></i> Auxiliares
+      <ul>
+        <li data-link>
+          <a href="#postalcode">
+            Codigos Postales<span></span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {{/if}}
+    {{#if canAccessSysConfig}}
+    <li>
+      <i class="fa fa-cogs" aria-hidden="true"></i> Sistema
+      <ul>
+        <li data-link>
+          <a href="#users">
+            Usuarios <span></span>
+          </a>
+        </li>
+        <li data-link>
+          <a href="#roles">
+            Roles <span></span>
+          </a>
+        </li>
+        <li data-link>
+          <a href="#printers">
+            Impresoras <span></span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    {{/if}}
+    {{#if canReport}}
+    <li>
+      <i class="fa fa-list" aria-hidden="true"></i> Reportes
+      <ul>
+        <li data-link>
+          <a href="#reports">
+            Generales <span></span>
+          </a>
+        </li>
+        <li>
+          Contables <i class="comming-soon">muy pronto</i>
+        </li>
+        {{#if canAudit}}
+        <li data-link>
+          <a href="#audit">
+            Auditoria<span></span>
+          </a>
+        </li>
+        {{/if}}
+      </ul>
+    </li>
+    {{/if}}
+  </ul>
+</nav>

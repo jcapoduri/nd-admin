@@ -1,0 +1,16 @@
+.report-form {
+  h3 {
+    margin-top: $normal-padding * 2;
+  }
+
+  label {
+    font-weight: normal;
+  }
+}
+
+.report-table {
+  margin-top: $normal-padding * 2;
+  h3, h4 {
+    margin-top: 0;
+  }
+}

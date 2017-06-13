@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS `clients`;
+DROP TABLE IF EXISTS `postalcode`;
+DROP TABLE IF EXISTS `zones`;
+DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `userroles`;
+DROP TABLE IF EXISTS `permissions`;
+DROP TABLE IF EXISTS `authentries`;
+DROP TABLE IF EXISTS `userrole_permission`;
+DROP TABLE IF EXISTS `user_roles`;
+DROP TABLE IF EXISTS `journal`;

@@ -1,0 +1,22 @@
+AddDefaultCharset UTF-8
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^/?api/?(.*)$ base.php?_url=/$1 [QSA,L]
+    RewriteRule ^ - [L]
+    # If the requested resource doesn't exist, use index.html
+    RewriteRule ^ /index.html
+</IfModule>
+
+#RewriteEngine On
+#RewriteRule ^/?api/.+$ index.php [L]
+#
+## If an existing asset or directory is requested go to it as it is
+#RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+#RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+#RewriteRule ^ - [L]
+#
+#
+## If the requested resource doesn't exist, use index.html
+#RewriteRule ^ /index.html

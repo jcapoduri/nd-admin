@@ -1,0 +1,27 @@
+<form class="form-horizontal">
+  <div class="form-group required" data-container="name">
+    <label for="inputName" class="col-sm-2 control-label">Nombre :</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputName" placeholder="Nombre" data-bind="name" value="{{name}}" aria-describedby="helpBlockName">
+      <span id="helpBlockName" class="help-block"></span>
+    </div>
+  </div>
+  <div class="form-group required" data-container="email">
+    <label for="inputEmail" class="col-sm-2 control-label">Email :</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" id="inputEmail" placeholder="Email" data-bind="email" value="{{email}}" aria-describedby="helpBlockEmail">
+      <span id="helpBlockEmail" class="help-block"></span>
+    </div>
+  </div>
+  <div class="form-group required" data-container="password">
+    <label for="inputPassword" class="col-sm-2 control-label">Password :</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword" placeholder="password" data-bind="password" value="{{lastname}}" aria-describedby="helpBlockPassword">
+      <span id="helpBlockPassword" class="help-block"></span>
+    </div>
+  </div>
+  <div class="form-group required" data-container="role">
+    <label for="inputRole" class="col-sm-2 control-label">Rol :</label>
+    <div class="col-sm-10" id="roleContainer"></div>
+  </div>
+</form>

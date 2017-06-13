@@ -1,0 +1,15 @@
+<div class="input-group">
+  <input type="text" class="form-control" name="" value="{{#if selectedValue}}{{selectedValue}}{{else}}{{search}}{{/if}}" data-bind="search">
+  <span class="input-group-btn">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li>
+        <input type="text" name="" value="{{omnisearch}}" data-bind="omnisearch" autofocus>
+      </li>
+      <div mn-region>
+      </div>
+    </ul>
+  </span>
+</div>

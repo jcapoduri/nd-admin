@@ -1,0 +1,24 @@
+{
+    "name": "C2Si-web/phalcon-development",
+    "description": "",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Application\\": "Application/"
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5.0",
+        "ext-phalcon": ">=2.0",
+        "phalcon/devtools": ">=2.0.1"
+    },
+    "require-dev": {
+        "codeception/codeception" :"*",
+        "flow/jsonpath": "dev-master"
+    },
+    "config": {
+        "bin-dir": "./vendor/bin"
+    }
+}
