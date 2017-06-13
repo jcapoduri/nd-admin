@@ -26,13 +26,20 @@
           </ul>
       </div><!-- /.container-fluid -->
     </nav>
-    <div class="container row">
+    <div class="container">
         <div class="col-md-3">
             <div class="panel panel-default panel-primary">
               <div class="panel-body">
-                Panel content
+                <i>n</i> {{business name}}
+                <h5> clonado de: {{repo}}</h5>
+                <div class="pull-right">
+                  <button class="btn btn-primary"> Acceder </button>
+                  <button class="btn btn-default"> Administrar</button>
+                </div>
               </div>
-              <div class="panel-footer">Panel footer</div>
+              <div class="panel-footer clearfix">
+                {{status info}}
+              </div>
             </div>
         </div><div class="col-md-3">
             <div class="panel panel-default panel-primary">
