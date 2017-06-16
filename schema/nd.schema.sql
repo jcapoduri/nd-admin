@@ -19,3 +19,12 @@ CREATE TABLE IF NOT EXISTS `journal` (
   `entryNewValue` varchar(1024) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE IF NOT EXISTS `authentries` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `token` varchar(255) NOT NULL,
+  `validUntil` timestamp NOT NULL,
+  `id_user` int(10) unsigned NOT NULL,
+  `isDeleted` BOOLEAN NOT NULL DEFAULT FALSE,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
