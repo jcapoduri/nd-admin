@@ -5,19 +5,18 @@ namespace Neodymium\Models;
 use Phalcon\Mvc\Model;
 use Phalcon\Mvc\Model\Behavior\SoftDelete;
 
-class User extends Model
+class Business extends Model
 {
   use Base;
 
   protected $name;
-
-  protected $password;
-
-  protected $email;
+  protected $socialName;
+  protected $branch;
+  protected $commit;
 
   public function initialize()
   {
-    $this->setSource("users");
+    $this->setSource("business");
     $this->keepSnapshots(true);
     $this->addBehavior(new SoftDelete([
       'field'         => 'isDeleted',
@@ -41,30 +40,35 @@ class User extends Model
       return $this->name;
   }
 
-  public function setPassword($password) {
+  public function setSocialName($socialname) {
       // The name is too short?
-      if (strlen($password) < 1) {
+      if (strlen($socialname) < 1) {
           throw new InvalidArgumentException(
-              "The password is too short"
+              "The name is too short"
           );
-      };
+      }
 
-      $info = $this->di->get("security_config");
-
-      $this->password = password_hash($password, PASSWORD_BCRYPT);
+      $this->socialName = $socialname;
   }
 
-  public function getPassword()
-  {
-      return $this->password;
+  public function getSocialName() {
+      return $this->socialName;
   }
 
-  public function setEmail($email) {
-      return $this->email = $email;
+  public function setBranch($branch) {
+        $this->branch = $branch;
   }
 
-  public function getEmail() {
-      return $this->email;
+  public function getBranch() {
+        return $this->branch;
+  }
+
+  public function setCommit($commit) {
+        $this->commit = $commit;
+  }
+
+  public function getCommit() {
+        return $this->commit;
   }
 }
 

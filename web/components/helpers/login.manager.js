@@ -6,7 +6,6 @@ var LoggedUser = Backbone.Model.extend({
   parse: function(response) {
     var result = {},
         data = response;
-    console.log(response);
     result.name = data.name;
     result.email = data.email;
     result.canAudit = _.find(data.permissions, (x) => x.id == 3);
