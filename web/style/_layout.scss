@@ -18,76 +18,17 @@ a {
   }
 }
 
-.main-sidebar {
-    background   : $background-color-dark;
-    color        : $primary-color-dark;
-    font-size    : $font-size-normal;
-    min-height   : 100%;
-    padding      : $normal-padding;
-    border-right : 1px white outset
-
-    h3 {
-        font-size  : $font-size-xlarge;
-        margin-top : $normal-padding;
+.instances {
+  .panel {
+    .panel-body {
+      height : $panel-inner-height
     }
 
-    header {
-        display   : block;
-        width     : 100%;
-        height    : 5rem;
-        font-size : $font-size-normal;
-
-        .option {
-            font-size  : $font-size-xsmall;
-        }
-    }
-
-    .comming-soon {
-        content    : 'muy pronto!';
-        color      : $warning-color-dark;
-        font-size  : $font-size-xsmall;
-    }
-
-    ul {
-      list-style-type: none;
-      -webkit-padding-start: 0;
-
-      li {
-        margin-bottom : $normal-padding;
-        -webkit-padding-start: 0;
-
-        span {
-          display: none;
-        }
-
-        &:first-child {
-          margin-top : $normal-padding;
-        }
-
-        &.active {
-          margin-right: -$normal-padding;
-          a > span {
-            display: block;
-            height: 10px;
-            width: 10px;
-            float: right;
-            background: white;
-            transform: rotate(45deg);
-            position: relative;
-            right: -$normal-padding;
-            top: $normal-padding;
-          }
-        }
-
-        ul {
-          li {
-             -webkit-padding-start:  $normal-padding * 4;
-          }
-        }
+    .panel-add {
+      text-align : center;
+      i {
+        font-size: 8em;
       }
     }
-}
-
-.main-content {
-    padding: $normal-padding * 2;
+  }
 }

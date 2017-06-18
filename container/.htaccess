@@ -1,0 +1,7 @@
+RewriteEngine On
+# RewriteBase /
+
+RewriteCond %{THE_REQUEST} /neodymium/([^\s?]*) [NC]
+RewriteRule ^ %1 [L,NE,R=302]
+
+RewriteRule ^((?!neodymium/).*)$ neodymium/$1 [L,NC]

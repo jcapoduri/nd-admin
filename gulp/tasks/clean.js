@@ -5,7 +5,7 @@ var config = require('../settings');
 var Q = require('q');
 
 var task = function() {
-  return del([config.distPath + '/**/*']);
+  return del([config.distPath + '/**/*', '!' + config.distPath + '/instances']);
 };
 
 gulp.task('clean', task);
