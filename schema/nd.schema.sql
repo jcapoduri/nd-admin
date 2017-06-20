@@ -29,14 +29,14 @@ CREATE TABLE IF NOT EXISTS `authentries` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE IF NOT EXISTS 'businesses' (
-'id' int(10) unsigned NOT NULL AUTO_INCREMENT,
-'name' varchar(255) NOT NULL,
-'socialName' varchar(255) NOT NULL,
-'branch' varchar(255) NOT NULL,
-'commit' varchar(255) NOT NULL, 
-'isDeleted' BOOLEAN NOT NULL DEFAULT FALSE,
-PRIMARY KEY ('id')
+CREATE TABLE IF NOT EXISTS `businesses` (
+`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+`name` varchar(255) NOT NULL,
+`socialName` varchar(255) NOT NULL,
+`branch` varchar(255) NOT NULL,
+`commit` varchar(255) NOT NULL, 
+`isDeleted` BOOLEAN NOT NULL DEFAULT FALSE,
+PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 

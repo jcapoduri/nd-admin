@@ -4,6 +4,7 @@ namespace Neodymium\Controllers;
 use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Dispatcher;
 use Neodymium\Models\User;
+use Neodymium\Models\Business;
 
 /**
  * ControllerBase
@@ -12,7 +13,15 @@ use Neodymium\Models\User;
 class InstanceController extends ControllerBase
 {
     public function getAction($id = null) {
-        return null;
+        if ($id) {
+            return Business::findFirst($id);
+        }  else {
+            return Business::find ([
+                "isDeleted = FALSE"
+            ]);
+
+        }
+        
     }
 
     public function queryAction() {
@@ -20,15 +29,29 @@ class InstanceController extends ControllerBase
     }
 
     public function postAction() {
-        return null;
+        $data     = $this->request->getJsonRawBody();
+        $business = new Business(); 
+        $business->setName($data->name);
+        $business->setSocialName($data->socialName);
+        $business->setBranch($data->branch);
+        $business->setCommit($data->commit);
+
+        return $business->save();
     }
 
     public function putAction($id) {
-        return null;
+        $data     = $this->request->getJsonRawBody();
+        $business = Business::findFirst($id);
+        if ($data->name) $business->setName($data->name);
+        if ($data->socialName) $business->setSocialName($data->socialName);
+        if ($data->branch) $business->setBranch($data->branch);
+        if ($data->commit) $business->setCommit($data->commit);
+        return $business->save();
     }
 
     public function deleteAction($id) {
-        return null;
+        $business = Business::findFirst($id);
+        return $business->delete();
     }
 }
 
