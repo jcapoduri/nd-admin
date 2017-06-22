@@ -1,11 +1,21 @@
-import {Backbone, Validation, Marionette, _} from '../../vendor/vendor';
+import {Backbone} from '../../vendor/vendor';
 import config from '../config';
 
 class InstanceModel extends Backbone.Model {
     constructor() {
         super();
         this.urlRoot = config.baseApiUri + '/instance';
-        this.validation = {
+    }
+
+    get defaults() {
+        return {
+            name: '',
+            socialName: ''
+        };
+    }
+
+    get validation() {
+        return {
                 name: [{
                     required: true,
                     msg: "Por favor, inserte un nombre"
