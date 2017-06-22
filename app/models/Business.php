@@ -16,7 +16,7 @@ class Business extends Model
 
   public function initialize()
   {
-    $this->setSource("business");
+    $this->setSource("businesses");
     $this->keepSnapshots(true);
     $this->addBehavior(new SoftDelete([
       'field'         => 'isDeleted',

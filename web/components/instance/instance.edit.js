@@ -6,7 +6,8 @@ import Decorator from '../helpers/error.decorator';
 class InstanceEditView extends Marionette.View {
     constructor() {
         super({
-            template: template
+            template: template,
+            behaviors: [Binding, Decorator]
         })
     }
 }
