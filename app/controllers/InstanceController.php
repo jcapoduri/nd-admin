@@ -33,10 +33,35 @@ class InstanceController extends ControllerBase
         $business = new Business(); 
         $business->setName($data->name);
         $business->setSocialName($data->socialName);
-        $business->setBranch($data->branch);
-        $business->setCommit($data->commit);
+        
+               
 
-        return $business->save();
+        if (isset($data->branch)) {
+            $business->setBranch($data->branch);
+        } else {
+            $business->setBranch(" ");
+        };
+        if (isset($data->commit)) {
+            $business->setCommit($data->commit);
+        } else {
+            $business->setCommit(" ");
+        };
+
+        if ($business->save()) {
+            $name = md5($data->name);
+            $source = 'C:\dev\nd-admin\container';
+            $dest   = 'C:\dev\nd-admin\instances'; 
+            
+            return true;
+        } else {
+            $messages = $business->getMessages();
+
+            foreach ($messages as $message) {
+                echo $message, "\n";
+            }
+
+            return $messages;
+        };
     }
 
     public function putAction($id) {
