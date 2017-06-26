@@ -33,10 +33,15 @@ class InstanceController extends ControllerBase
         $business = new Business(); 
         $business->setName($data->name);
         $business->setSocialName($data->socialName);
-        $business->setBranch($data->branch);
-        $business->setCommit($data->commit);
+        $business->setBranch(isset($data->branch) ? $data->branch : "master");
+        $business->setCommit(isset($data->commit) ? $data->commit : " ");
 
-        return $business->save();
+        if ($business->save()) {
+            return true;
+        } else {
+            throw new Exception($business->getMessages(), 1);
+            
+        };
     }
 
     public function putAction($id) {

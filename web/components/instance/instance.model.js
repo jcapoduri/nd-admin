@@ -2,8 +2,8 @@ import {Backbone} from '../../vendor/vendor';
 import config from '../config';
 
 class InstanceModel extends Backbone.Model {
-    constructor() {
-        super();
+    constructor(config) {
+        super(config);
         this.urlRoot = config.baseApiUri + '/instance';
     }
 
