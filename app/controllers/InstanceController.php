@@ -48,10 +48,14 @@ class InstanceController extends ControllerBase
         };
 
         if ($business->save()) {
-            $name = md5($data->name);
+            $name = $data->name;
             $source = 'C:\dev\nd-admin\container';
-            $dest   = 'C:\dev\nd-admin\instances'; 
+            $dest   = 'C:\dev\nd-admin\instances';
+            mkdir("C:\\dev\\nd-admin\\instances\\{$name}",0777); 
+            mkdir("C:\\dev\\nd-admin\\instances\\{$name}\\snapshots",0777);
+            mkdir("C:\\dev\\nd-admin\\instances\\{$name}\\tools",0777);
             
+                        
             return true;
         } else {
             $messages = $business->getMessages();
