@@ -7,6 +7,7 @@ use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Mvc\Dispatcher\Exception as DispatchException;
 use Neodymium\Managers\AuthManager;
+use Neodymium\Managers\InstanceManager;
 use Phalcon\Logger;
 use Phalcon\Logger\Adapter\File as FileAdapter;
 use Phalcon\Crypt;
@@ -28,8 +29,7 @@ $di->set("db", function() use ($config) {
 
 $di->set("security_config", function() use ($config) {
     $dbconf = $config["security"];
-    return
-        [
+    return [
             "salt" => $dbconf["salt"],
             "key"  => $dbconf["key"]
         ];
@@ -37,6 +37,11 @@ $di->set("security_config", function() use ($config) {
 
 $di->set("app_config", function() use ($config) {
     $appconfig = $config["application"];
+    return $appconfig;
+});
+
+$di->set("db_config", function() use ($config) {
+    $appconfig = $config["database"];
     return $appconfig;
 });
 
@@ -89,6 +94,16 @@ $di->set(
         $auth = new AuthManager();
         $auth->setDI($di);
         return $auth;
+    },
+    true
+);
+
+$di->set(
+    "InstanceManager",
+    function() use ($di) {
+        $mgr = new InstanceManager();
+        $mgr->setDI($di);
+        return $mgr;
     },
     true
 );

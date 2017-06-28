@@ -2,7 +2,7 @@
 
 /**
 * USAGE:
-* php create.php host=localhost dbuser=empresa_user dbpass=empresa_pass dbname=nd_empresa dbrootuser=root dbrootpass= businessID=1
+* php create.php host=localhost dbuser=empresa_user dbpass=empresa_pass dbname=nd_empresa dbrootuser=root dbrootpass= businessID=1 path=
 */
 
 foreach ($argv as $argi) {
@@ -30,8 +30,11 @@ foreach ($argv as $argi) {
       case 'businessID':
         $businessID = $arg[1];
         break;
+      case 'path':
+        $path = $arg[1];
+        break;
       default:
-        # code...
+        # ignore
         break;
     }
   }
@@ -54,35 +57,36 @@ try {
 }
 
 //clone code
-exec('git clone https://github.com/jcapoduri/neodymium.git');
+chdir('neodymium');
+exec('git pull');
 
 //set up conection information
-$configFile = fopen('neodymium/app/config/config.ini', 'w');
-fwrite($configFile, '[database]');
-fwrite($configFile, 'host     = ' . $dbhost);
-fwrite($configFile, 'username = ' . $dbuser);
-fwrite($configFile, 'password = ' . $dbpass);
-fwrite($configFile, 'name     = ' . $dbname);
-fwrite($configFile, '[application]');
-fwrite($configFile, 'businessID     = ' . $businessID);
-fwrite($configFile, 'path           = dev/nd');
-fwrite($configFile, 'controllersDir = app/controllers/');
-fwrite($configFile, 'modelsDir      = app/models/');
-fwrite($configFile, 'viewsDir       = app/views/');
-fwrite($configFile, 'pluginsDir     = app/plugins/');
-fwrite($configFile, 'formsDir       = app/forms/');
-fwrite($configFile, 'libraryDir     = app/library/');
-fwrite($configFile, 'baseUri        = /invo/');
+$configFile = fopen('app/config/config.ini', 'w');
+fwrite($configFile, '[database]' . PHP_EOL);
+fwrite($configFile, 'host     = ' . $dbhost . PHP_EOL);
+fwrite($configFile, 'username = ' . $dbuser . PHP_EOL);
+fwrite($configFile, 'password = ' . $dbpass . PHP_EOL);
+fwrite($configFile, 'name     = ' . $dbname . PHP_EOL);
+fwrite($configFile, '[application]' . PHP_EOL);
+fwrite($configFile, 'businessID     = ' . $businessID . PHP_EOL);
+fwrite($configFile, 'path           = ' . $path . PHP_EOL);
+fwrite($configFile, 'controllersDir = app/controllers/' . PHP_EOL);
+fwrite($configFile, 'modelsDir      = app/models/' . PHP_EOL);
+fwrite($configFile, 'viewsDir       = app/views/' . PHP_EOL);
+fwrite($configFile, 'pluginsDir     = app/plugins/' . PHP_EOL);
+fwrite($configFile, 'formsDir       = app/forms/' . PHP_EOL);
+fwrite($configFile, 'libraryDir     = app/library/' . PHP_EOL);
 fwrite($configFile, '[security]');
 fwrite($configFile, 'key  = ' . sha1(time()));
 fwrite($configFile, 'salt = ' . md5(time()));
 fclose($configFile);
 
 //install application
-chdir('neodymium');
-exec('composer update');
-exec('npm install');
+//exec('composer update');
+//exec('npm install');
+exec('gulp compile');
 
 //complete creation
+exec('php tools/setup.php');
 
 ?>
