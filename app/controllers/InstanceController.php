@@ -19,9 +19,7 @@ class InstanceController extends ControllerBase
             return Business::find ([
                 "isDeleted = FALSE"
             ]);
-
         }
-        
     }
 
     public function queryAction() {
@@ -32,15 +30,32 @@ class InstanceController extends ControllerBase
         $data     = $this->request->getJsonRawBody();
         $business = new Business(); 
         $business->setName($data->name);
+        $business->setSlug($data->name);
         $business->setSocialName($data->socialName);
-        $business->setBranch(isset($data->branch) ? $data->branch : "master");
-        $business->setCommit(isset($data->commit) ? $data->commit : " ");
+
+        if (isset($data->branch)) {
+            $business->setBranch($data->branch);
+        } else {
+            $business->setBranch("master");
+        };
+        if (isset($data->commit)) {
+            $business->setCommit($data->commit);
+        } else {
+            $business->setCommit(" ");
+        };
 
         if ($business->save()) {
+            try {
+                $instanceManager = $this->di->get("InstanceManager");
+                $instanceManager->createInstance($business);
+            } catch(\Exception $e) {
+                throw $e;
+            }
+            
             return true;
         } else {
-            throw new Exception($business->getMessages(), 1);
-            
+            $messages = $business->getMessages();
+            throw new Exception(join(', ', $messages), 1);
         };
     }
 
