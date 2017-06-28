@@ -50,8 +50,7 @@ class InstanceController extends ControllerBase
                 $instanceManager->createInstance($business);
             } catch(\Exception $e) {
                 throw $e;
-            }
-            
+            }            
             return true;
         } else {
             $messages = $business->getMessages();
