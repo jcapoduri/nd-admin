@@ -8,8 +8,12 @@
       </div>
       <div class="panel-footer clearfix">
         <div class="pull-right">
-          <button class="btn btn-primary"> Acceder </button>
-          <button class="btn btn-default"> Administrar</button>
+          <button class="btn btn-primary"> 
+            <a href="instances/{{slug}}">Acceder </a>
+          </button>
+          {{#if isLoged}}
+            <button class="btn btn-default"> Administrar</button>
+          {{/if}}
         </div>
       </div>
     </div>

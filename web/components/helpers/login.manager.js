@@ -6,14 +6,13 @@ var LoggedUser = Backbone.Model.extend({
   parse: function(response) {
     var result = {},
         data = response;
-    result.name = data.name;
+    result.name  = data.name;
     result.email = data.email;
-    result.canAudit = _.find(data.permissions, (x) => x.id == 3);
-    result.canEditMainEntities = _.find(data.permissions, (x) => x.id == 4);
-    result.canEditAuxiliaries = _.find(data.permissions, (x) => x.id == 5);
-    result.canReport = _.find(data.permissions, (x) => x.id == 6);
-    result.canAccessSysConfig = _.find(data.permissions, (x) => x.id == 8);
+    result.id    = 1;
     return result;
+  },
+  isLoged() {
+    return !this.isNew();
   }
 })
 
@@ -29,18 +28,11 @@ var LoginManagerObject = Marionette.Object.extend({
   getLoggedUser: function() {
     this.loggedUser.fetch({
         success : _.bind(this.onUserLogIn, this),
-        error   : _.bind(this.onUserLogError, this)
+        error   : _.bind(this.onUserLogIn, this)
     });
   },
   onUserLogIn: function(model, result) {
-    if (!result) {
-        this.onUserLogError();
-    } else {
-        this.trigger('login');
-    }
-  },
-  onUserLogError: function() {
-    window.location = 'login/';
+    this.trigger('login');
   },
   logout: function() {
     console.log("ponele que te deslogeo ;)");

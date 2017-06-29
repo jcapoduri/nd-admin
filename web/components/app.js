@@ -28,8 +28,7 @@ export default Marionette.Application.extend({
     Backbone.history.start();
   },
   onUserLogOut: function () {
-      window.location = 'login/';
-      this.destroy();
+      window.refresh();
   },
   loadContent(view) {
     this.baseLayout.setContent(view)

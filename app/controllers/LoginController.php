@@ -5,7 +5,7 @@ use Phalcon\Mvc\Controller;
 use Phalcon\Mvc\Dispatcher;
 use Neodymium\Models\User;
 use Neodymium\Controllers\DTO\UserDTO;
-use \Exception;
+use \ErrorException;
 
 class LoginController extends ControllerBase
 {
@@ -16,7 +16,7 @@ class LoginController extends ControllerBase
           $authmanager = $this->di->get("auth");
           $user = $authmanager->getLoggedUser($token);
           if (!$user) {
-            throw Exception("Auth invalid!");
+            throw new \ErrorException("Auth invalid!");
           } else {
             return new UserDTO($user);
           }

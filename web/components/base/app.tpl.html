@@ -2,7 +2,11 @@
   <div class="container-fluid">
       <a class="navbar-brand" href="#">Neodymium::Administracion</a>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Salir</a></li>
+      {{#if isLoged}}
+        <li><a data-click="logout">Salir</a></li>
+      {{else}}
+      	<li><a href="login/">Ingresar</a></li>
+      {{/if}}
       </ul>
   </div><!-- /.container-fluid -->
 </nav>
