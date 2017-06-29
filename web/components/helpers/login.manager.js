@@ -8,7 +8,7 @@ var LoggedUser = Backbone.Model.extend({
         data = response;
     result.name  = data.name;
     result.email = data.email;
-    result.id    = 1;
+    result.id    = data ? 1 : null;
     return result;
   },
   isLoged() {

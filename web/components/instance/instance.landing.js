@@ -1,6 +1,7 @@
 import {Marionette, Backbone, Validation, _} from '../../vendor/vendor';
 import {InstanceCollection} from './instance.collection';
 import {InstanceView} from './instance.view';
+import {LoginManager} from '../helpers/login.manager';
 import template from './instance.landing.tpl.html';
 import Binding from '../helpers/binding';
 import Decorator from '../helpers/error.decorator';
@@ -31,6 +32,13 @@ class InstanceLanding extends Marionette.View {
 
     onRender() {
         this.showChildView('instances', new InstanceCollectionView());
+    }
+
+    templateContext() {
+        this.user = this.user || LoginManager.getUser();
+        return {
+            isLoged: this.user.isLoged()
+        }
     }
 }
 

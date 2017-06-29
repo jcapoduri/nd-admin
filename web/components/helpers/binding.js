@@ -4,12 +4,14 @@ var behavior = Marionette.Behavior.extend({
     ui: {
         input    : 'input[data-bind]',
         select   : 'select[data-bind]',
-        textarea : 'textarea[data-bind]'
+        textarea : 'textarea[data-bind]',
+        actionable : '[data-click]'
     },
     events: {
-        'change @ui.input'   : 'updateModel',
-        'change @ui.select'  : 'updateModelFromSelect',
-        'change @ui.textarea': 'updateModel'
+        'change @ui.input'      : 'updateModel',
+        'change @ui.select'     : 'updateModelFromSelect',
+        'change @ui.textarea'   : 'updateModel',
+        'click  @ui.actionable' : 'onActionableClick'
     },
     updateModel: function(evt) {
         var el = evt.currentTarget,
@@ -27,7 +29,12 @@ var behavior = Marionette.Behavior.extend({
         _.each(this.ui.select, function(x) {
             $(x).change();
         }, this);
-    }
+    },
+    onActionableClick: function(evt) {
+        var el = evt.currentTarget,
+            bindingName = el.getAttribute('data-click');
+        this.view[bindingName].call(this.view, evt);
+    },
 });
 
 module.exports = behavior;
