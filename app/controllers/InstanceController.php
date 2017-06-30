@@ -44,14 +44,18 @@ class InstanceController extends ControllerBase
             $business->setCommit(" ");
         };
 
+        $business->setInstanceCreated(false);
+
         if ($business->save()) {
             try {
                 $instanceManager = $this->di->get("InstanceManager");
                 $instanceManager->createInstance($business);
+                $business->setInstanceCreated(true);
+                $business->save();
+                return true;
             } catch(\Exception $e) {
                 throw $e;
             }            
-            return true;
         } else {
             $messages = $business->getMessages();
             throw new Exception(join(', ', $messages), 1);

@@ -14,6 +14,7 @@ class Business extends Model
   protected $slug;
   protected $branch;
   protected $commit;
+  protected $instanceCreated;
 
   public function initialize()
   {
@@ -80,6 +81,14 @@ class Business extends Model
 
   public function getSlug() {
     return $this->slug;
+  }
+
+  public function isInstanceCreated() {
+    return $this->instanceCreated;
+  }
+
+  public function setInstanceCreated($value) {
+    $this->instanceCreated = $value;
   }
 
   protected function slugify($text) {

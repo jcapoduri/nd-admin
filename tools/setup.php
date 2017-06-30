@@ -26,19 +26,19 @@ try {
     require APP_PATH . 'app/config/services.php';
 
     //do the magic
-    $dbms_schema = APP_PATH .'/schema/nd.clean.sql';
+    $dbms_schema = APP_PATH .'schema/nd.clean.sql';
     $sql_query = @fread(@fopen($dbms_schema, 'r'), @filesize($dbms_schema)) or die('problem openning ' . $dbms_schema);
 
     echo("cleaning up..." . PHP_EOL);
     $di->get("db")->execute($sql_query);
 
-    $dbms_schema = APP_PATH . '/schema/nd.schema.sql';
+    $dbms_schema = APP_PATH . 'schema/nd.schema.sql';
     $sql_query = @fread(@fopen($dbms_schema, 'r'), @filesize($dbms_schema)) or die('problem openning ' . $dbms_schema);
 
     echo("clean done, loading schema up..." . PHP_EOL);
     $di->get("db")->execute($sql_query);
 
-    $dbms_schema = APP_PATH . '/schema/nd.data.sql';
+    $dbms_schema = APP_PATH . 'schema/nd.data.sql';
     $sql_query = @fread(@fopen($dbms_schema, 'r'), @filesize($dbms_schema)) or die('problem openning ' . $dbms_schema);
 
     echo('schema done, loading initial data...' . PHP_EOL);
