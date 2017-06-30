@@ -41,7 +41,7 @@ class InstanceController extends ControllerBase
         if (isset($data->commit)) {
             $business->setCommit($data->commit);
         } else {
-            $business->setCommit(" ");
+            $business->setCommit("HEAD");
         };
 
         if ($business->save()) {
