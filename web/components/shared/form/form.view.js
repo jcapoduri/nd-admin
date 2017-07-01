@@ -40,6 +40,7 @@ var formView = Marionette.View.extend({
   },
   onButtonClicked: function(evt) {
     evt.stopPropagation();
+    evt.preventDefault();
     var btn = evt.currentTarget,
         btnOptions = _.find(this.buttons, x => x.id === btn.id);
     this[btnOptions.action].call(this);

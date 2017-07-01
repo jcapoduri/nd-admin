@@ -35,7 +35,6 @@ var LoginManagerObject = Marionette.Object.extend({
     this.trigger('login');
   },
   logout: function() {
-    console.log("ponele que te deslogeo ;)");
     Backbone.sync("delete", {url: config.baseApiUri + '/login'}, {
       success: _.bind(function() { this.trigger('logout'); }, this)
     });
