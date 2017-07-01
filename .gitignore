@@ -28,4 +28,5 @@ public/
 vendor/
 cache/
 main.js
+instances
 app/config/config.ini.dev
