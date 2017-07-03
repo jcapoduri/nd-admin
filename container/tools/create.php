@@ -76,9 +76,9 @@ fwrite($configFile, 'viewsDir       = app/views/' . PHP_EOL);
 fwrite($configFile, 'pluginsDir     = app/plugins/' . PHP_EOL);
 fwrite($configFile, 'formsDir       = app/forms/' . PHP_EOL);
 fwrite($configFile, 'libraryDir     = app/library/' . PHP_EOL);
-fwrite($configFile, '[security]');
-fwrite($configFile, 'key  = ' . sha1(time()));
-fwrite($configFile, 'salt = ' . md5(time()));
+fwrite($configFile, '[security]' . PHP_EOL);
+fwrite($configFile, 'key  = ' . sha1(time()) . PHP_EOL);
+fwrite($configFile, 'salt = ' . md5(time()) . PHP_EOL);
 fclose($configFile);
 
 //install application
